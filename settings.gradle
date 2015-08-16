@@ -1,0 +1,2 @@
+include 'android-extension'
+project(':android-extension').name = 'android-extension'
