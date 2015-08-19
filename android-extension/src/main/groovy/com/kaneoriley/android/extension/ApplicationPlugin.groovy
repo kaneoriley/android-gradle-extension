@@ -1,5 +1,7 @@
 package com.kaneoriley.android.extension
 
+import com.android.build.gradle.api.ApkVariant
+import com.android.build.gradle.api.BaseVariantOutput
 import org.gradle.api.Project
 
 class ApplicationPlugin extends ExtensionPlugin {
@@ -10,8 +12,24 @@ class ApplicationPlugin extends ExtensionPlugin {
         project.apply plugin: 'com.android.application'
         super.apply(project)
 
-        project.ext.set(project.name, variant.mergedFlavor.versionName + "_" + variant.mergedFlavor.versionCode +
-                "_" + variant.buildType.name);
+        project.afterEvaluate {
+            project.android.applicationVariants.each { ApkVariant variant ->
+                variant.outputs.each { BaseVariantOutput vo ->
+                    if (!vo.outputFile.name.endsWith('.apk')) {
+                        return;
+                    }
+
+                    String appName = project.name
+                    Integer versionCode = variant.mergedFlavor.versionCode
+                    String versionName = variant.mergedFlavor.versionName
+                    String buildType = variant.buildType.name
+
+                    String filename = "${appName}-${versionName}-${versionCode}-${buildType}.apk".toLowerCase()
+                    //noinspection GroovyAssignabilityCheck
+                    vo.outputFile = new File(vo.outputFile.parentFile, filename)
+                }
+            }
+        }
 
         project.apt {
             arguments {
