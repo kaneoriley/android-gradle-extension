@@ -9,5 +9,11 @@ class ApplicationPlugin extends ExtensionPlugin {
         project.apply plugin: 'android-sdk-manager'
         project.apply plugin: 'com.android.application'
         super.apply(project)
+
+        project.apt {
+            arguments {
+                resourcePackageName project.android.defaultConfig.applicationId
+            }
+        }
     }
 }

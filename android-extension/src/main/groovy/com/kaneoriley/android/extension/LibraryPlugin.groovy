@@ -9,5 +9,11 @@ class LibraryPlugin extends ExtensionPlugin {
         project.apply plugin: 'android-sdk-manager'
         project.apply plugin: 'com.android.library'
         super.apply(project)
+
+        project.apt {
+            arguments {
+                androidManifestFile variant.outputs[0].processResources.manifestFile
+            }
+        }
     }
 }
