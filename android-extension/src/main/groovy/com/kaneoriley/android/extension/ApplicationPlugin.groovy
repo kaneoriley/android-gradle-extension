@@ -4,6 +4,9 @@ import com.android.build.gradle.api.ApkVariant
 import com.android.build.gradle.api.BaseVariantOutput
 import org.gradle.api.Project
 
+import java.text.SimpleDateFormat
+
+@SuppressWarnings("GroovyUnusedDeclaration")
 class ApplicationPlugin extends ExtensionPlugin {
 
     @Override
@@ -70,4 +73,21 @@ class ApplicationPlugin extends ExtensionPlugin {
             }
         }
     }
+
+    static def getDate() {
+        def df = new SimpleDateFormat("yyMMddHH")
+        Calendar c = Calendar.getInstance();
+        TimeZone tz = c.getTimeZone();
+        df.setTimeZone(tz)
+        return df.format(new Date())
+    }
+
+    static def getShortDate() {
+        def df = new SimpleDateFormat("yyMMdd")
+        Calendar c = Calendar.getInstance();
+        TimeZone tz = c.getTimeZone();
+        df.setTimeZone(tz)
+        return df.format(new Date())
+    }
+
 }
