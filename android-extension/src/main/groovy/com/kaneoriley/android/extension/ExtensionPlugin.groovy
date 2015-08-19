@@ -66,7 +66,26 @@ class ExtensionPlugin implements Plugin<Project> {
             compile 'org.jetbrains.kotlin:kotlin-stdlib:0.12.1230'
         }
 
+        project.task('fixCrashlytics') {
+            project.android.sourceSets.each { variantSource ->
+                File crashlyticsFile = project.file("src/${variantSource.name}/res/values/com_crashlytics_export_strings.xml")
+                File crashlyticsIncFile = project.file("${project.buildDir}/intermediates/incremental")
+                if (crashlyticsFile.exists()) {
+                    crashlyticsFile.delete()
+                }
+                if (crashlyticsIncFile.exists()) {
+                    crashlyticsIncFile.delete()
+                }
+            }
+        }
+
         project.afterEvaluate {
+            project.tasks.findAll { task ->
+                if (task.name.contains('pre') && task.name.endsWith('Build')) {
+                    task.dependsOn project.fixCrashlytics
+                }
+            }
+
             variants.all { variant ->
                 JavaCompile javaCompile = variant.javaCompile
                 javaCompile.doLast {
