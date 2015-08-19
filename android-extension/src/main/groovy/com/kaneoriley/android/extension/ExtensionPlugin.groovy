@@ -38,6 +38,7 @@ class ExtensionPlugin implements Plugin<Project> {
             mavenLocal()
         }
 
+        project.apply plugin: 'android-sdk-manager'
         project.apply plugin: 'kotlin-android'
         project.apply plugin: 'me.tatarka.retrolambda'
         project.apply plugin: 'com.neenbedankt.android-apt'
