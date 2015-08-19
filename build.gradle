@@ -25,6 +25,7 @@ project.ext {
     androidBuildToolsVersion = '1.3.0'
     aptVersion = "1.6"
     aspectjVersion = '1.8.6'
+    kotlinVersion = '0.12.613'
     lombokVersion = '1.16.4'
     retrolambdaVersion = '3.2.1'
     retrolambdaLintFixVersion = '0.2.3.a2'

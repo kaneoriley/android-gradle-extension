@@ -17,4 +17,5 @@ dependencies {
     compile "me.tatarka:gradle-retrolambda:${retrolambdaVersion}"
     compile "me.tatarka.retrolambda.projectlombok:lombok.ast:${retrolambdaLintFixVersion}"
     compile "com.neenbedankt.gradle.plugins:android-apt:${aptVersion}"
+    compile "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}"
 }

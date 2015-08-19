@@ -38,6 +38,7 @@ class ExtensionPlugin implements Plugin<Project> {
             mavenLocal()
         }
 
+        project.apply plugin: 'kotlin-android'
         project.apply plugin: 'me.tatarka.retrolambda'
         project.apply plugin: 'com.neenbedankt.android-apt'
 
@@ -46,11 +47,23 @@ class ExtensionPlugin implements Plugin<Project> {
                 sourceCompatibility JavaVersion.VERSION_1_8
                 targetCompatibility JavaVersion.VERSION_1_8
             }
+
+            sourceSets {
+                main.java.srcDirs += 'src/main/kotlin'
+            }
         }
 
         project.dependencies {
             compile 'org.aspectj:aspectjrt:1.8.6'
+            compile project.fileTree(dir: 'libs', include: ['*.jar'])
+            compile 'com.android.support:support-annotations:22.2.1'
             provided 'org.projectlombok:lombok:1.16.4'
+            compile 'org.slf4j:slf4j-api:1.7.12'
+            compile('com.github.tony19:logback-android-classic:1.1.1-4') {
+                exclude group: 'com.google.android', module: 'android'
+                exclude module: 'apktool-lib'
+            }
+            compile 'org.jetbrains.kotlin:kotlin-stdlib:0.12.613'
         }
 
         project.afterEvaluate {
