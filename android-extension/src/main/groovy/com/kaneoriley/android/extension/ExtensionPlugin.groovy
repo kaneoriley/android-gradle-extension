@@ -57,7 +57,7 @@ class ExtensionPlugin implements Plugin<Project> {
             compile project.fileTree(dir: 'libs', include: ['*.jar'])
             compile 'org.aspectj:aspectjrt:1.8.6'
             compile 'com.android.support:support-annotations:23.0.0'
-            provided 'org.projectlombok:lombok:1.16.4'
+            provided 'org.projectlombok:lombok:1.16.6'
             compile 'org.slf4j:slf4j-api:1.7.12'
             compile('com.github.tony19:logback-android-classic:1.1.1-4') {
                 exclude group: 'com.google.android', module: 'android'
