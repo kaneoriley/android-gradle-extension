@@ -3,3 +3,30 @@
 # android-gradle-extension
 
 TODO: Actual README
+
+# Gradle Dependency
+
+Firstly, you need to add JitPack.io to your repositories list in the root projects build.gradle:
+
+```gradle
+repositories {
+    maven { url "https://jitpack.io" }
+}
+```
+
+Then, add android-gradle-extension to your buildscript dependencies:
+
+```gradle
+buildscript {
+    dependencies {
+        classpath 'com.kaneoriley:android-gradle-extension:0.1.1'
+    }
+}
+```
+
+The last step is to apply the plugin to your application or library project, for example:
+
+```gradle
+apply plugin: 'com.android.application' || apply plugin: 'com.android.library'
+apply plugin: 'com.kaneoriley.android.extension'
+```
