@@ -63,7 +63,7 @@ class ExtensionPlugin implements Plugin<Project> {
                 exclude group: 'com.google.android', module: 'android'
                 exclude module: 'apktool-lib'
             }
-            compile 'org.jetbrains.kotlin:kotlin-stdlib:0.12.613'
+            compile 'org.jetbrains.kotlin:kotlin-stdlib:0.12.1230'
         }
 
         project.afterEvaluate {
