@@ -8,6 +8,7 @@ class LibraryPlugin extends ExtensionPlugin {
     void apply(Project project) {
         project.apply plugin: 'android-sdk-manager'
         project.apply plugin: 'com.android.library'
+        project.apply plugin: 'com.github.dcendents.android-maven'
         super.apply(project)
 
         project.apt {
