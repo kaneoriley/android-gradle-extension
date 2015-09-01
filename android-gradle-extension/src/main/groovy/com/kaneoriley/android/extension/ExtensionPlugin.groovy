@@ -39,7 +39,6 @@ class ExtensionPlugin implements Plugin<Project> {
         }
 
         project.apply plugin: 'android-sdk-manager'
-        project.apply plugin: 'kotlin-android'
         project.apply plugin: 'me.tatarka.retrolambda'
         project.apply plugin: 'com.neenbedankt.android-apt'
 
@@ -47,10 +46,6 @@ class ExtensionPlugin implements Plugin<Project> {
             compileOptions {
                 sourceCompatibility JavaVersion.VERSION_1_8
                 targetCompatibility JavaVersion.VERSION_1_8
-            }
-
-            sourceSets {
-                main.java.srcDirs += 'src/main/kotlin'
             }
         }
 
@@ -64,7 +59,6 @@ class ExtensionPlugin implements Plugin<Project> {
                 exclude group: 'com.google.android', module: 'android'
                 exclude module: 'apktool-lib'
             }
-            compile 'org.jetbrains.kotlin:kotlin-stdlib:0.12.1230'
         }
 
         project.task('fixCrashlytics') {
