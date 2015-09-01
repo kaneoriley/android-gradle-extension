@@ -1,2 +1,2 @@
-include 'android-extension'
-project(':android-extension').name = 'android-extension'
+include 'android-gradle-extension'
+project(':android-gradle-extension').name = 'android-gradle-extension'
